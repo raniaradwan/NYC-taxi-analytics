@@ -1,0 +1,23 @@
+services:
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+  clickhouse:
+    image: 'clickhouse/clickhouse-server:latest'
+    container_name: clickhouse
+    volumes:
+      - ${PWD}/fs/volumes/clickhouse/etc/clickhouse-server/config.d/config.xml:/etc/clickhouse-server/config.d/config.xml
+      - ${PWD}/fs/volumes/clickhouse/etc/clickhouse-server/users.d/users.xml:/etc/clickhouse-server/users.d/users.xml
+    ports:
+      - '8123:8123'
+      - '9000:9000'
+    environment:
+      - CLICKHOUSE_PASSWORD=default
+volumes:
+  grafana-storage: {}
+  

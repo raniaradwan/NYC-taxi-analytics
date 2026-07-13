@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NYC Taxi</title>
+    <style>
+        body { font-family: Arial; background: #1a1a2e; color: white; padding: 20px; }
+        .card { background: #16213e; padding: 20px; margin: 10px; border-radius: 10px; display: inline-block; min-width: 200px; vertical-align: top; }
+        .number { font-size: 40px; color: #4CAF50; }
+    </style>
+</head>
+<body>
+    <h1>🚕 NYC Taxi Dashboard</h1>
+
+    <div class="card">
+        <h3>Total Trips</h3>
+        <div class="number" id="total-trips">Loading...</div>
+    </div>
+
+    <div class="card">
+        <h3>Top Areas</h3>
+        <div id="top-areas">Loading...</div>
+    </div>
+
+    <script>
+        fetch('http://127.0.0.1:8000/trips')
+            .then(r => r.json())
+            .then(data => {
+                document.getElementById('total-trips').innerText = data.total_trips;
+            });
+
+        fetch('http://127.0.0.1:8000/top-areas')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                let html = '';
+                data.forEach(item => {
+                    html += `<p>📍 ${item.area}: ${item.trips}</p>`;
+                });
+                document.getElementById('top-areas').innerHTML = html;
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    </script>
+</body>
+</html>
