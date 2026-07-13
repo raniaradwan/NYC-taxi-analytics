@@ -76,3 +76,17 @@ https://www.linkedin.com/in/rania-s-radwan
 
 GitHub:
 https://github.com/raniaradwan
+
+## Project Screenshots
+
+### Grafana Dashboard
+
+![Dashboard 1](Screenshot%202026-07-13%20161103.png)
+
+![Dashboard 2](Screenshot%202026-07-13%20161206bh.png)
+
+![Dashboard 3](Screenshot%202026-07-13%20161253s.png)
+
+![Dashboard 4](Screenshot%202026-07-13%20161332a.png)
+
+![Dashboard 5](Screenshot%202026-07-13%20161406jk.png)
